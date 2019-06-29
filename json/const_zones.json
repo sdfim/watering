@@ -1,0 +1,6 @@
+{
+"zones": [
+    {"name": "z1", "gpio": "14", "norm": 3, "http_esp": "http://192.168.0.54:84"},
+    {"name": "z2", "gpio": "12", "norm": 3, "http_esp": "http://192.168.0.54:84"}],
+"start_h_watering": 19
+}
