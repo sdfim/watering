@@ -6,7 +6,7 @@ or only raspberry <br>
 or raspberry and esp <br>
 
 fill in the file - const_zones.json <br>
-exampe <br>
+example <br>
 {
 "zones": [ <br>
     {"name": "z1", "gpio": "14", "norm": 3, "http_esp": "http://192.168.0.54:84"},  <br>
