@@ -2,10 +2,8 @@
 
 for use <br>
 raspberry - router - (repiter) - one or more esp(espeasy) <br>
-or only raspberry
-or raspberry and esp
-
-
+or only raspberry <br>
+or raspberry and esp <br>
 
 fill in the file - const_zones.json <br>
 exampe <br>
