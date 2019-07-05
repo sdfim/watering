@@ -15,7 +15,7 @@ path = sys.argv[0].replace('watering.py', '')
 print('path = ',path)
 
 '''
-http://192.168.0.54/control?cmd=GPIO,14,0           # вкл поток, реле NO
+http://192.168.0.54/control?cmd=GPIO,14,0           # вкл поток
 http://192.168.0.54/control?cmd=GPIO,14,1           # выкл поток
 http://192.168.0.54/control?cmd=status,gpio,14      # состояние
 '''
@@ -43,8 +43,8 @@ for z in rf['zones']:
             response = requests.get(http+'/control?cmd=status,gpio,'+z['gpio'])
             
         print(response.status_code, i)
-        print(response.content)
-        print(response.json())
+        print("response.content=", response.content)
+        #print(response.json())
         if response.content == b'?':
             state = 1
         else:
@@ -61,15 +61,17 @@ for z in rf['zones']:
             
     # gpio on raspberry pi
     else:
-        state = relay.status_relay(z['gpio'])
+        #print("pi z['gpio'] = ", int(z['gpio']))
+        gpio = int(z['gpio'])
+        state = relay.status_relay(gpio)
         if z['watering'][0] <= c_h and z['watering'][1] > c_h and state == 1:
             print("вкл проток зоны", z['name'])
-            state = relay.on_relay(z['gpio'])
-            state = relay.status_relay(z['gpio'])
+            state = relay.on_relay(gpio)
+            state = relay.status_relay(gpio)
         elif (z['watering'][0] > c_h or z['watering'][1] <= c_h) and state == 0:
             print("выкл проток зоны", z['name'])
-            state = relay.off_relay(z['gpio'])
-            state = relay.status_relay(z['gpio'])
+            state = relay.off_relay(gpio)
+            state = relay.status_relay(gpio)
         else:
             print("зона", z['name'], " в норме")
             
