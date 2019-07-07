@@ -66,7 +66,7 @@ for z in rf['zones']:
         h = round(watering/4-watering/4*100%25/100, 2)            # необходимое время полива в часах до сотых
         start_time = round(start_h_watering+temp_time, 2)
         end_time = round(start_h_watering+temp_time+h, 2)
-        temp_time = h
+        temp_time += h
         z.update({"watering": [start_time, end_time]})
 rf.update({"date":today})
 pprint(rf)
